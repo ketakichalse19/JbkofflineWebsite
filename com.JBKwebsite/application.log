@@ -1,0 +1,6 @@
+2020-07-23 16:33:41,476  INFO [main] RegistrationPage:49 - Registration Clickable
+2020-07-23 16:33:41,586  INFO [main] RegistrationPage:98 - Heading match
+2020-07-23 16:33:41,608  INFO [main] RegistrationPage:88 - Title match
+2020-07-23 16:33:41,662  INFO [main] RegistrationPage:109 - Total no of text box is correct
+2020-07-23 16:33:42,679  INFO [main] RegistrationPage:78 - Signin successfully and accept alert
+2020-07-23 16:33:43,032  INFO [main] RegistrationPage:120 - Click successfully to I already have a membership
