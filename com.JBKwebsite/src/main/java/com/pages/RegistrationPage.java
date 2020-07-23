@@ -2,6 +2,7 @@ package com.pages;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationPage {
 	WebDriver driver;
+	Logger log = Logger.getLogger(this.getClass());
 	
 	@FindBy(linkText = "Register a new membership")
 	private WebElement registerMember;
@@ -44,10 +46,10 @@ public class RegistrationPage {
 	public boolean validateRegistraionLink(WebDriver driver) {
 		try {
 			registerMember.click();
-			System.out.println("Registration Clickable");
+			log.info("Registration Clickable");
 			return true;
 		} catch (Throwable e) {
-			System.out.println("Registration UnClickable");
+			log.info("Registration UnClickable");
 			return false;
 		}
 	}
@@ -73,30 +75,30 @@ public class RegistrationPage {
 			signinButton.click();
 			Alert al = driver.switchTo().alert();
 			al.accept();
-			System.out.println("Signin successfully and accept alert");
+			log.info("Signin successfully and accept alert");
 			return true;
 		} catch (Throwable e) {
-			System.out.println("Failed to SignIn");
+			log.info("Failed to SignIn");
 			return false;
 		}
 	}
 
 	public boolean getTitleOfRegistrationPage(WebDriver driver) {
 		if (driver.getTitle().equals("JavaByKiran | Registration Page")) {
-			System.out.println("Title match");
+			log.info("Title match");
 			return true;
 		} else {
-			System.out.println("Title mismatch");
+			log.info("Title mismatch");
 			return false;
 		}
 	}
 
 	public boolean getTextOfHeading(WebDriver driver) {
 		if (heading.getText().equals("Java By Kiran")) {
-			System.out.println("Heading match");
+			log.info("Heading match");
 			return true;
 		} else {
-			System.out.println("Heading mismatch");
+			log.info("Heading mismatch");
 			return false;
 		}
 	}
@@ -104,10 +106,10 @@ public class RegistrationPage {
 	public boolean validateNoOfTextBoxes(WebDriver driver) {
 		List<WebElement> textboxList = driver.findElements(By.tagName("input"));
 		if (textboxList.size() == 4) {
-			System.out.println("Total no of text box is correct");
+			log.info("Total no of text box is correct");
 			return true;
 		} else {
-			System.out.println("Total no of text box is Incorrect");
+			log.info("Total no of text box is Incorrect");
 			return false;
 		}
 	}
@@ -115,10 +117,10 @@ public class RegistrationPage {
 	public boolean validationOfAlreadyMemberLink(WebDriver driver) {
 		try {
 			alreadyMember.click();
-			System.out.println("Click successfully to I already have a membership");
+			log.info("Click successfully to I already have a membership");
 			return true;
 		} catch (Throwable t) {
-			System.out.println("Unclickable to I already have a membership ");
+			log.info("Unclickable to I already have a membership ");
 			return false;
 		}
 	}
@@ -127,7 +129,7 @@ public class RegistrationPage {
 		if (validationOfAlreadyMemberLink(driver) == true) {
 			return driver.getTitle().equals("JavaByKiran | Log in");
 		} else {
-			System.out.println("Not return to Login page");
+			log.info("Not return to Login page");
 			return false;
 		}
 	}
