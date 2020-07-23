@@ -1,6 +1,7 @@
 package com.pages;
 
 import java.util.List;
+
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class RegistrationPage {
 	WebDriver driver;
-
+	
 	@FindBy(linkText = "Register a new membership")
 	private WebElement registerMember;
 
@@ -39,7 +40,8 @@ public class RegistrationPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	public boolean validateRegistraionLink() {
+	
+	public boolean validateRegistraionLink(WebDriver driver) {
 		try {
 			registerMember.click();
 			System.out.println("Registration Clickable");
@@ -89,7 +91,7 @@ public class RegistrationPage {
 		}
 	}
 
-	public boolean getTextOfHeading() {
+	public boolean getTextOfHeading(WebDriver driver) {
 		if (heading.getText().equals("Java By Kiran")) {
 			System.out.println("Heading match");
 			return true;
@@ -102,28 +104,30 @@ public class RegistrationPage {
 	public boolean validateNoOfTextBoxes(WebDriver driver) {
 		List<WebElement> textboxList = driver.findElements(By.tagName("input"));
 		if (textboxList.size() == 4) {
+			System.out.println("Total no of text box is correct");
 			return true;
 		} else {
+			System.out.println("Total no of text box is Incorrect");
 			return false;
 		}
 	}
 
-	public boolean validationOfAlreadyMemberLink() {
+	public boolean validationOfAlreadyMemberLink(WebDriver driver) {
 		try {
 			alreadyMember.click();
 			System.out.println("Click successfully to I already have a membership");
 			return true;
 		} catch (Throwable t) {
-			System.out.println("I already have a membership unclickable");
+			System.out.println("Unclickable to I already have a membership ");
 			return false;
 		}
 	}
 
 	public boolean validationOfMembership(WebDriver driver) {
-		if (validationOfAlreadyMemberLink() == true) {
+		if (validationOfAlreadyMemberLink(driver) == true) {
 			return driver.getTitle().equals("JavaByKiran | Log in");
 		} else {
-			System.out.println("It doesnt return to Login page");
+			System.out.println("Not return to Login page");
 			return false;
 		}
 	}
